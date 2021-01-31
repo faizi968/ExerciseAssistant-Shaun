@@ -22,7 +22,6 @@ bool oldDeviceConnected = false;
 /***** Accelerometer Definitions *****/
 #define SDA_1 21
 #define SCL_1 22
-
 #define SDA_2 33
 #define SCL_2 32
 
@@ -69,10 +68,10 @@ void setup() {
   delay(10);                                        // Delay for the Serial Console to properly boot-up
   Serial.println("started");
 
-  /***** HX-711 Initializing and Calibration *****
+  /***** HX-711 Initializing and Calibration *****/
   Serial.println("Initializing the scales");
   scale1.begin(LOADCELL1_DOUT_PIN, LOADCELL1_SCK_PIN);
-  scale2.begin(LOADCELL2_DOUT_PIN, LOADCELL2_SCK_PIN);
+//  scale2.begin(LOADCELL2_DOUT_PIN, LOADCELL2_SCK_PIN);
 
   Serial.println("Before setting up the scale 01:");
   Serial.print("read: \t\t");
@@ -81,17 +80,17 @@ void setup() {
   Serial.print("read average 01: \t\t");
   Serial.println(scale1.read_average(20));
 
-  Serial.println("Before setting up the scale 02:");
-  Serial.print("read: \t\t");
-  Serial.println(scale2.read());
-
-  Serial.print("read average 02: \t\t");
-  Serial.println(scale2.read_average(20));
+//  Serial.println("Before setting up the scale 02:");
+//  Serial.print("read: \t\t");
+//  Serial.println(scale2.read());
+//
+//  Serial.print("read average 02: \t\t");
+//  Serial.println(scale2.read_average(20));
 
   scale1.set_scale(2280.f);                     
   scale1.tare();
-  scale2.set_scale(2280.f);                     
-  scale2.tare();
+//  scale2.set_scale(2280.f);                     
+//  scale2.tare();
 
   Serial.print("read average 01: \t\t");
   Serial.println(scale1.read_average(20));
@@ -99,17 +98,17 @@ void setup() {
   Serial.print("get units 01: \t\t");
   Serial.println(scale1.get_units(5), 1);
 
-  Serial.print("read average 02: \t\t");
-  Serial.println(scale2.read_average(20));
+//  Serial.print("read average 02: \t\t");
+//  Serial.println(scale2.read_average(20));
+//
+//  Serial.print("get units 02: \t\t");
+//  Serial.println(scale2.get_units(5), 1);
 
-  Serial.print("get units 02: \t\t");
-  Serial.println(scale2.get_units(5), 1);
-
-  Serial.println("HX711 Calibration Done"); /
+  Serial.println("HX711 Calibration Done"); 
   
   /***** MEMS Sensor Initialization *****/
-  Wire.begin(SDA_1, SCL_1);
-  Wire1.begin(SDA_2, SCL_2);
+  I2Cone.begin(SDA_1, SCL_1, 100000); 
+  I2Ctwo.begin(SDA_2, SCL_2, 100000);
 
   bool status1 = mpu1.begin(0x68, &I2Cone);
   if (!status1) {
@@ -143,13 +142,13 @@ void setup() {
   
   BLEService *pService = pServer->createService(SERVICE_UUID);
   
-  pCharacteristic = pService->createCharacteristic(           // Definition contatinig Properties of the Characteristic
+  pCharacteristic = pService->createCharacteristic(           
                       CHARACTERISTIC_UUID,
                       BLECharacteristic::PROPERTY_READ   |
                       BLECharacteristic::PROPERTY_WRITE  |
                       BLECharacteristic::PROPERTY_NOTIFY |
                       BLECharacteristic::PROPERTY_INDICATE
-                    );
+                    );    // Definition contatinig Properties of the Characteristic
                     
   pCharacteristic->addDescriptor(new BLE2902());
   
