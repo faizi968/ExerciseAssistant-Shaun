@@ -50,5 +50,6 @@ Observe the response and debugging information on the Serial Monitor.
    calibration factor = 600 / 200g = 3
    scale.set_scale(3);
 6. Repeat from step 3 to step 5 until the serial monitor shows the correct weight of the object by changing the calibration factor. Note the value. This will be used in the load    cell test sketch.
+7. Calibrate both the load cells in similar way one by one and note their calibration factors.
 
 
