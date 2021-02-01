@@ -11,6 +11,7 @@ These instructions assume you already have ESP32 BSP (Board Support installed on
 When the code is uploaded, open serial monitor by navigating towards the top right icon or by pressing CTRL+SHIFT+M keys.
 Observe the response and debugging information on the Serial Monitor.
 5. For testing the load cell, open the sketch "Test_Code_HX711" and follow the steps above to see the response of the load cell.
+6. Remember to put the calibration value calculated in load cell test in the set_scale() function in setup().
 6. Use the nRF Connect App to view the data in your smartphone over BLE.
 
 ### Library Installation
