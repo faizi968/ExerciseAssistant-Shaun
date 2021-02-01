@@ -2,9 +2,7 @@
  Firmware Repository for a Smart Weight Assistant to enable user to precisely carry out activities and be aware of how much Calories they burned
 ## Instructions
 
-These instructions assume you already have ESP32 BSP (Board Support installed on your Arduino IDE). If the ESP32 BSP is not installed, please refer to the following link for instructions on how to install the BSP.
-
-https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+These instructions assume you already have ESP32 BSP (Board Support installed on your Arduino IDE). If the ESP32 BSP is not installed, please refer to the "Library Installation" section below for assistance.
 
 1. Start by cloning the repository to your drive.
 2. Open the folder, Test_Code_MPU6050 and open the sketch "Test_Code_MPU6050.ino".
