@@ -69,7 +69,7 @@ void setup() {
   delay(10);                                        // Delay for the Serial Console to properly boot-up
   Serial.println("started");
 
-  /***** HX-711 Initializing and Calibration *****
+  /***** HX-711 Initializing and Calibration *****/
   Serial.println("Initializing the scales");
   scale1.begin(LOADCELL1_DOUT_PIN, LOADCELL1_SCK_PIN);
   scale2.begin(LOADCELL2_DOUT_PIN, LOADCELL2_SCK_PIN);
@@ -105,9 +105,9 @@ void setup() {
   Serial.print("get units 02: \t\t");
   Serial.println(scale2.get_units(5), 1);
 
-  Serial.println("HX711 Calibration Done");/
+  Serial.println("HX711 Calibration Done");
   
-  /***** MEMS Sensor Initialization *****/
+  /***** MEMS Sensor Initialization *****
   I2Cone.begin(SDA_1, SCL_1);
   I2Ctwo.begin(SDA_2, SCL_2);
 
@@ -120,8 +120,8 @@ void setup() {
   if (!status2) {
     Serial.println("Could not find a valid MPU_2 sensor, check wiring!");
   }
-
-  /***** Get Module Detail from Sensors *****/
+/
+  /***** Get Module Detail from Sensors *****
   if (status1) {
     mpu1_accel = mpu1.getAccelerometerSensor();
     mpu1_accel->printSensorDetails();
@@ -135,6 +135,8 @@ void setup() {
     mpu2_gyro = mpu2.getGyroSensor();
     mpu2_gyro->printSensorDetails();
   }
+/
+  
   /***** BLE-Stack Initialization *****/
   BLEDevice::init("ESP32_Shaun");
   

@@ -1,12 +1,12 @@
 void sens_data() {
 
-  mpu_data();
-  //weight_data();
-  
+  //mpu_data();
+  weight_data();
 
-  mydata = "aX1"+String(aX1)+"aY1"+String(aY1)+"aZ1"+String(aZ1)+"gX1"+String(gX1)+"gY1"+String(gY1)+"gZ1"+String(gZ1)+
-           "aX2"+String(aX2)+"aY2"+String(aY2)+"aZ2"+String(aZ2)+"gX2"+String(gX2)+"gY2"+String(gY2)+"gZ2"+String(gZ2);
-           //"W1"+String(scale1.get_units(10),1)+"W2"+String(scale1.get_units(10),1);
+  
+  mydata = //"aX1"+String(aX1)+"aY1"+String(aY1)+"aZ1"+String(aZ1)+"gX1"+String(gX1)+"gY1"+String(gY1)+"gZ1"+String(gZ1)+
+           //"aX2"+String(aX2)+"aY2"+String(aY2)+"aZ2"+String(aZ2)+"gX2"+String(gX2)+"gY2"+String(gY2)+"gZ2"+String(gZ2);
+           "W1"+String(w1)+"W2"+String(w2);
   mydata.toCharArray(payload, 80);
 
   delay(500);
