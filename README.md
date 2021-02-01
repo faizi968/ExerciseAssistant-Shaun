@@ -7,10 +7,11 @@ These instructions assume you already have ESP32 BSP (Board Support installed on
 1. Start by cloning the repository to your drive.
 2. Open the folder, Test_Code_MPU6050 and open the sketch "Test_Code_MPU6050.ino".
 3. When the file opens, compile the sketch in Arduino IDE with "ESP32 Dev Module" selected as the Board. There are some libraries that need to be installed prior to compilation in order for the code to compile properly. Skip to "Library Installation" section for further info.
-4. After successful compilation, find the circuit connection diagram present in "Board_Design" folder.
-5. Build up the same circuit as in the sketch and afterwords, press the upload button with the ESP32 connected to the system via MicroUSB cable (remember to select the correct COM port on which the ESP32 is communicating).
+4. After successful compilation, build up the same circuit as in the sketch and afterwards, press the upload button with the ESP32 connected to the system via MicroUSB cable (remember to select the correct COM port on which the ESP32 is communicating).
 When the code is uploaded, open serial monitor by navigating towards the top right icon or by pressing CTRL+SHIFT+M keys.
 Observe the response and debugging information on the Serial Monitor.
+5. For testing the load cell, open the sketch "Test_Code_HX711" and follow the steps above to see the response of the load cell.
+6. Use the nRF Connect App to view the data in your smartphone over BLE.
 
 ### Library Installation
 
@@ -36,5 +37,17 @@ Observe the response and debugging information on the Serial Monitor.
 2. After successful cloning, open your Arduino IDE and go to Sketch > Include Library > Add .zip library. A browse windows will open.
 3. Navigate to where you saved the .zip library file and double click on it to add it to your list of libraries.
 4. Restart the Arduino IDE for changes to take effect.
+
+### Load Cell Calibration
+1. Upload the sketch "Load_Cell_Calibration" to the ESP32 and follow the steps below.
+2. Open the serial monitor and wait for the IDE to show the message "Place a known weight on the load cell".
+3. After placing the weight, wait for the value to show up on the serial monitor.
+4. Divide the value shown on the Serial monitor with the known weight of the object in grams. We will call it "Calibration Factor".
+5. Once again, run the code and this time, inside the set_scale() function, write the value of calibration factor calculated in step 4. For example,
+   known weight = 200g
+   value shown on monitor after first run = 600
+   calibration factor = 600 / 200g = 3
+   scale.set_scale(3);
+6. Repeat from step 3 to step 5 until the serial monitor shows the correct weight of the object by changing the calibration factor. Note the value. This will be used in the load    cell test sketch.
 
 
