@@ -45,9 +45,9 @@ Observe the response and debugging information on the Serial Monitor.
 3. After placing the weight, wait for the value to show up on the serial monitor.
 4. Divide the value shown on the Serial monitor with the known weight of the object in grams. We will call it "Calibration Factor".
 5. Once again, run the code and this time, inside the set_scale() function, write the value of calibration factor calculated in step 4. For example,
-   known weight = 200g
-   value shown on monitor after first run = 600
-   calibration factor = 600 / 200g = 3
+   known weight = 200g, 
+   value shown on monitor after first run = 600, 
+   calibration factor = 600 / 200g = 3, 
    scale.set_scale(3);
 6. Repeat from step 3 to step 5 until the serial monitor shows the correct weight of the object by changing the calibration factor. Note the value. This will be used in the load    cell test sketch.
 7. Calibrate both the load cells in similar way one by one and note their calibration factors.
